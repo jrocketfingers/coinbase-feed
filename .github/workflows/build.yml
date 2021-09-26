@@ -21,5 +21,7 @@ jobs:
       - run: poetry install
       - run: poetry run flake8
       - run: poetry run mypy **/*.py
-      - run: poetry run pytest --cov=coinbase_feed
+      - run: poetry run pytest --cov=coinbase_feed --cov-report=xml
       - uses: codecov/codecov-action@v2
+        with:
+          fail_ci_if_error: true
