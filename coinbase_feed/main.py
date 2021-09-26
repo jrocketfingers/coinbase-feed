@@ -13,7 +13,7 @@ from coinbase_feed.symbol import Symbol
 from coinbase_feed.utils import load_config, instantiate_symbols
 
 
-symbols: Dict[str, Symbol] = {}
+symbols: Optional[Dict[str, Symbol]] = None
 
 
 async def run():
