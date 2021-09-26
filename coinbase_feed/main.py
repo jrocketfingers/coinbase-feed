@@ -4,7 +4,7 @@ import os
 from dataclasses import dataclass
 from decimal import Decimal
 from collections import defaultdict
-from typing import Dict
+from typing import Dict, Optional
 
 import websockets
 

@@ -4,7 +4,6 @@ from decimal import Decimal
 from typing import Deque, Optional, cast
 
 
-@dataclass
 class Datapoint:
     size: Decimal
     price: Decimal
