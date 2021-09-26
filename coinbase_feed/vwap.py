@@ -1,7 +1,7 @@
 from collections import deque
 from dataclasses import dataclass
 from decimal import Decimal
-from typing import Deque, Union
+from typing import Deque, Optional, cast
 
 
 @dataclass
@@ -22,18 +22,21 @@ class VWAPFrame:
 
     def __init__(
         self,
-        initial_data: Union[Deque[Datapoint], None] = None,
-        maxlen: Union[int, None] = 200,
+        initial_data: Optional[Deque[Datapoint]] = None,
+        maxlen: int = 200,
     ):
         if initial_data is not None:
             self.datapoints = initial_data
-            self.maxlen = initial_data.maxlen
-        else:
+            if initial_data.maxlen is not None:
+                self.maxlen = initial_data.maxlen
+            else:
+                self.maxlen = maxlen
+        elif maxlen is not None:
             self.datapoints = deque(maxlen=maxlen)
             self.maxlen = maxlen
 
-        self.value_sum = sum([d.size * d.price for d in self.datapoints])
-        self.quantity_sum = sum([d.size for d in self.datapoints])
+        self.value_sum = cast(Decimal, sum([d.size * d.price for d in self.datapoints]))
+        self.quantity_sum = cast(Decimal, sum([d.size for d in self.datapoints]))
 
     def add_datapoint(self, new_datapoint: Datapoint):
         old_datapoint = Datapoint(size=0, price=0)

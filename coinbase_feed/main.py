@@ -6,7 +6,7 @@ from decimal import Decimal
 from collections import defaultdict
 from typing import Dict
 
-from websockets import connect
+import websockets
 
 from coinbase_feed.vwap import VWAPFrame, Datapoint
 from coinbase_feed.symbol import Symbol
@@ -17,7 +17,7 @@ symbols: Dict[str, Symbol] = {}
 
 
 async def run():
-    async with connect("wss://ws-feed.pro.coinbase.com") as websocket:
+    async with websockets.connect("wss://ws-feed.pro.coinbase.com") as websocket:
         request = {
             "type": "subscribe",
             "product_ids": list(symbols.keys()),
