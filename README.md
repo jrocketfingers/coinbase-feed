@@ -2,6 +2,7 @@ Running
 -------
 
 ![Test CI](https://github.com/jrocketfingers/coinbase-feed/actions/workflows/build.yml/badge.svg)
+[![codecov](https://codecov.io/gh/jrocketfingers/coinbase-feed/branch/master/graph/badge.svg?token=NOP89CO2WB)](https://codecov.io/gh/jrocketfingers/coinbase-feed)
 
 Ensure you have `poetry` available:
 ```python
