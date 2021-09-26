@@ -22,6 +22,13 @@ def symbols():
 
 @pytest.mark.asyncio
 async def test_with_fake_websocket_server(mocker, symbols):
+    """
+    Creates a stream of fake data served by a fake websocket server. Once the full stream is sent
+    it verifies that the output data matches a naive calculation of VWAP.
+
+    TEST_SIZE controls the amount of matches sent. A number above 200 (or whatever the maxlen is set to)
+    will ensure that the window sliding is actually tested.
+    """
     # given an output mock
     output_mock = mocker.patch("coinbase_feed.main.send_to_output_stream")
 
@@ -30,13 +37,14 @@ async def test_with_fake_websocket_server(mocker, symbols):
 
     done = asyncio.Future()
 
+    TEST_SIZE = 400
     # and a random dataset
     data = [
         {
             "size": random.randint(1, 5000) / 1000,
             "price": random.randrange(3000, 60000),
         }
-        for i in range(400)
+        for i in range(TEST_SIZE)
     ]
 
     async def handler(websocket, path):
@@ -72,7 +80,7 @@ async def test_with_fake_websocket_server(mocker, symbols):
 
         # then the calls to the output stream should match the VWAP naively calculated from the dataset
         WINDOW_SIZE = 200
-        for i in range(0, 400):
+        for i in range(0, TEST_SIZE):
             start = max(0, i + 1 - WINDOW_SIZE)
             end = i + 1
 
