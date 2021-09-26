@@ -86,7 +86,7 @@ async def test_with_fake_websocket_server(mocker, symbols):
 
             value_sum = sum([Decimal(d["price"]) * Decimal(d["size"]) for d in data[start:end]])
             size_sum = sum([Decimal(d["size"]) for d in data[start:end]])
-            vwap =  Decimal(value_sum / size_sum).quantize(Decimal("0.01"))
+            vwap = Decimal(value_sum / size_sum).quantize(Decimal("0.01"))
             calls.append(call("ETH-USD", vwap))
 
         output_mock.assert_has_calls(calls)
