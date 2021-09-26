@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "coinbase-feed"
+version = "0.1.0"
+description = ""
+authors = ["Johnny Rocketfingers <developer94@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+websockets = "^10.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pylint = "^2.11.1"
+mutmut = "^2.2.0"
+mypy = "^0.910"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
