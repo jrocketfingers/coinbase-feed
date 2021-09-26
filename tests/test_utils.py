@@ -5,7 +5,7 @@ from decimal import Decimal
 
 import pytest
 
-from coinbase_feed.main import Symbol
+from coinbase_feed.symbol import Symbol
 from coinbase_feed.utils import load_config, instantiate_symbols
 
 
@@ -80,4 +80,4 @@ def test_instantiate_symbols_with_invalid_config():
     config = [{"utter": "nonsense"}]
 
     with pytest.raises(Exception):
-        symbols = instantiate_symbols(config)
+        instantiate_symbols(config)
