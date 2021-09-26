@@ -10,9 +10,11 @@ websockets = "^10.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-pylint = "^2.11.1"
 mutmut = "^2.2.0"
 mypy = "^0.910"
+pdbpp = "^0.10.3"
+flake8 = "^3.9.2"
+pytest-cov = "^2.12.1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

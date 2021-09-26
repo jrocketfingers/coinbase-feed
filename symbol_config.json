@@ -1,0 +1,17 @@
+[
+    {
+        "id": "BTC-USD",
+        "base_precision": 8,
+        "quoting_precision": 2
+    },
+    {
+        "id": "ETH-USD",
+        "base_precision": 18,
+        "quoting_precision": 2
+    },
+    {
+        "id": "ETH-BTC",
+        "base_precision": 18,
+        "quoting_precision": 8
+    }
+]
