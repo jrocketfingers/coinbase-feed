@@ -1,6 +1,8 @@
 Running
 -------
 
+![Test CI](https://github.com/jrocketfingers/coinbase-feed/actions/workflows/build.yml/badge.svg)
+
 Ensure you have `poetry` available:
 ```python
 curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python -
