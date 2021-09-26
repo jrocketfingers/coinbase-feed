@@ -1,5 +1,6 @@
 import asyncio
 import json
+import os
 
 import websockets
 
@@ -7,8 +8,11 @@ from coinbase_feed.vwap import Datapoint
 from coinbase_feed.utils import load_config, instantiate_symbols
 
 
+ws_url = os.getenv("WS_URL", "wss://ws-feed.pro.coinbase.com")
+
+
 async def run(symbols):
-    async with websockets.connect("wss://ws-feed.pro.coinbase.com") as websocket:
+    async with websockets.connect(ws_url) as websocket:
         request = {
             "type": "subscribe",
             "product_ids": list(symbols.keys()),
@@ -33,6 +37,10 @@ async def consumer(message, symbols):
 
     vwap_value = symbol.vwap().quantize(symbol.quoting_precision)
 
+    send_to_output_stream(id_, vwap_value)
+
+
+def send_to_output_stream(id_, vwap_value):
     print(f"{id_}: {vwap_value}")
 
 
