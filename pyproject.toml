@@ -9,7 +9,7 @@ python = "^3.9"
 websockets = "^10.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^6.2.5"
+pytest = "^7.0.0"
 mutmut = "^2.2.0"
 mypy = "^0.910"
 pdbpp = "^0.10.3"
